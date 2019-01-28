@@ -1,4 +1,4 @@
-import React, { Component,Fragment } from "react";
+import React, { Component, Fragment } from "react";
 import BigCalendar from "react-big-calendar";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import moment from "moment";
@@ -11,10 +11,11 @@ import {
   OpenInBrowser,
   Delete
 } from "@material-ui/icons";
+
 import "./calendar.css";
 import DialogSelect from "../CustomEvents/Popup";
 import DomPic from "./DomPic";
-
+import Sharing from "./Sharing";
 BigCalendar.momentLocalizer(moment);
 
 const CustomEvent = ({ event }) => {
@@ -55,14 +56,13 @@ class Calendar extends Component {
     };
   }
 
- 
   // shouldComponentUpdate(nextProps, nextState, nextContext) {
   //   return (
   //    this.state.takePic!==nextState.takePic ||  this.props.classEventsInCalendar !== nextProps.classEventsInCalendar ||
   //     this.props.currentScheduleIndex !== nextProps.currentScheduleIndex||this.props.heighSize !== nextProps.heighSize
   //   );
   // }
-  
+
   //sorry boss
   // moreInfoURL = events => {
   //   let url =
@@ -74,17 +74,15 @@ class Calendar extends Component {
   //   window.open(url);
   // };
 
-  takePic =async (callback)=>{
- 
-    this.setState({takePic:true},async ()=>{
+  takePic = async callback => {
+    this.setState({ takePic: true }, async () => {
       await callback();
-      this.setState({takePic:false,scroll: new Date()});
-     
+      this.setState({ takePic: false, scroll: new Date() });
     });
-  }
+  };
   render() {
     return (
-     <Fragment>
+      <Fragment>
         <Paper id="ok" style={{ overflow: "auto", marginBottom: 8 }}>
           <Toolbar variant="dense" style={{ backgroundColor: "#5191d6" }}>
             <IconButton onClick={() => this.props.onScheduleChange(0)}>
@@ -103,6 +101,7 @@ class Calendar extends Component {
               </IconButton>
             </Tooltip>
             <DomPic takePic={this.takePic} />
+
             <Tooltip title="More Info on Selected Classes">
               <IconButton onClick={this.props.moreInfoF}>
                 <OpenInBrowser />
@@ -117,20 +116,20 @@ class Calendar extends Component {
                 <Delete />
               </IconButton>
             </Tooltip>
+            <Sharing takePic={this.takePic} />
           </Toolbar>
         </Paper>
-        <Paper   >
-           <div id="screenshot"  
+        <Paper>
+          <div
+            id="screenshot"
             {...(!this.state.takePic
-                ? {  style: {  height: [this.props.heighSize]+"vh" } }
-                : {})}
-                >
+              ? { style: { height: [this.props.heighSize] + "vh" } }
+              : {})}
+          >
             <BigCalendar
               //  {...(!this.state.takePic
               //   ? {  style: {  maxHeight: [this.props.heighSize]+"vh" } }
               //   : {})}
-              
-             
 
               toolbar={false}
               formats={{
@@ -161,9 +160,14 @@ class Calendar extends Component {
             />
           </div>
         </Paper>
-        </Fragment>
+      </Fragment>
     );
   }
 }
 
 export default Calendar;
+
+
+
+// WEBPACK FOOTER //
+// ./src/components/Calendar/Calendar.js
