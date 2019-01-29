@@ -5,7 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Popover from '@material-ui/core/Popover';
 import Input from '@material-ui/core/Input';
-import WhyID from './popover_cutomDiago'; 
+import WhyID from './popover_cutomDiago';
 
 const styles = theme => ({
   typography: {
@@ -81,21 +81,21 @@ class SPopover extends React.Component {
     const fb = this.state.userFB;
     const name = this.props.name[1] + " " + this.props.name[2]
 
-    const url = `https://mediaont.herokuapp.com/facebook/${code}/${name}/${fb}`;
+    const url = `https://mediaont.herokuapp.com/facebook/0/${code}/${name}/${fb}`;
 
 
     this.setState({anchorEl: null});
     window.localStorage.setItem("fb", fb);
       const res =  await fetch(url);
       const serverResponse = await res.text();
-      
+
 
       console.log(serverResponse,res.status)
       let check = 1
       if(res.status !== 200)
        check = -1
       this.props.handleSave(check, serverResponse);
-    
+
   }
 
   inputFacebookChange= (event)=>{
@@ -118,7 +118,7 @@ class SPopover extends React.Component {
 
     return (
       <React.Fragment>
-            
+
         <Button
           aria-owns={open ? 'simple-popper' : undefined}
           aria-haspopup="true"
@@ -193,19 +193,6 @@ class SPopover extends React.Component {
                   onClick={this.signupFB}>
             Add</Button>
         </div>
-
-       { /* <ExpansionPanel style = {{width : 450}}>
-          <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-            <Typography className={classes.heading}>**Facebook ID? What? Why?</Typography>
-          </ExpansionPanelSummary>
-          <ExpansionPanelDetails>
-            <Typography>
-              <p>Sorry fam, but you're not unique. That's why getting your name won't help me find you on FB. Instead, please enter the unique serial code with which FB has objectified you. Thanks!</p>
-              <p>Don't know what it is? <a href="https://findmyfbid.com" target="_blank">Find it here; no login requried</a>.</p>
-              <p>First time? Please check Settings >> People >> Message Requests >> filtered requests in the Messenger App for a confirmation message. Reply to it and you're all set!</p>
-            </Typography>
-          </ExpansionPanelDetails>
-          </ExpansionPanel>  */}
           <WhyID />
 
         </Popover>
