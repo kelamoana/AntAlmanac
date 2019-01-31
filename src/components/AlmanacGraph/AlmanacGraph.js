@@ -131,6 +131,7 @@ class AlmanacGraph extends Component {
                 onChange={this.handleChange}
                 inputProps={{ name: "term", id: "term-select" }}
               >
+                <MenuItem value={"2019 Winter"}>2019 Winter Quarter</MenuItem>
                 <MenuItem value={"2018 Fall"}>2018 Fall Quarter</MenuItem>
                 <MenuItem value={"2018 Spring"}>2018 Spring Quarter</MenuItem>
                 <MenuItem value={"2018 Winter"}>2018 Winter Quarter</MenuItem>
@@ -163,10 +164,10 @@ class AlmanacGraph extends Component {
                     />
                   );
                 })}
-                  
+
               </div>
             )}
-            
+
           </Paper>
         </Modal>
       </Fragment>

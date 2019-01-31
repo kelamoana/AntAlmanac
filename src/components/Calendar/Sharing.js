@@ -103,7 +103,7 @@ class Sharing extends React.Component {
           variant="contained"
           onClick={this.handleClick}
         >
-          <Tooltip title="Download Schedule">
+          <Tooltip title="Share Your Schedule on FB!">
             <Share />
           </Tooltip>
         </IconButton>
@@ -130,22 +130,21 @@ class Sharing extends React.Component {
             {!this.state.loading ? (
               <Typography>
                 <Typography>
-                  Image Link:
                   <a
                     target="_blank"
                     rel="noopener noreferrer"
                     href={this.state.image}
                   >
-                    Click to see the image!!!
+                    Link to Image.
                   </a>
+                  Share on:
                 </Typography>
-                Share:
                 <FacebookShareButton
                   url={this.state.image}
-                  quote="Shared from https://antalmanac.com/ (Antalmanac)!!!! "
+                  quote="Shared from Poor Peter's AntAlmanac: https://antalmanac.com/ !! "
                   hashtag="#AntAlmanac"
                 >
-                  <FacebookIcon size={32} round />
+                  <FacebookIcon size={100} round />
                 </FacebookShareButton>
               </Typography>
             ) : (
