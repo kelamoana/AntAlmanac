@@ -144,7 +144,7 @@ class Sharing extends React.Component {
                   quote="Shared from Poor Peter's AntAlmanac: https://antalmanac.com/ !! "
                   hashtag="#AntAlmanac"
                 >
-                  <FacebookIcon size={100} round />
+                  <FacebookIcon style={{cursor: "pointer"}} size={100} />
                 </FacebookShareButton>
               </Typography>
             ) : (
