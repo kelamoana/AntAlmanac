@@ -4,7 +4,6 @@ import IconButton from "@material-ui/core/IconButton";
 import GetApp from "@material-ui/icons/GetApp";
 import html2canvas from "html2canvas";
 import Tooltip from "@material-ui/core/Tooltip";
-import { FacebookShareButton, FacebookIcon } from "react-share";
 const styles = theme => ({
   input: {
     display: "none"

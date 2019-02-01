@@ -3,7 +3,6 @@ import { Fragment } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
 import Popover from "@material-ui/core/Popover";
 import IconButton from "@material-ui/core/IconButton";
 import Share from "@material-ui/icons/Share";
@@ -135,16 +134,19 @@ class Sharing extends React.Component {
                     rel="noopener noreferrer"
                     href={this.state.image}
                   >
-                    Link to Image.
+                    Image Link
                   </a>
+                </Typography>
+                <Typography>
                   Share on:
                 </Typography>
                 <FacebookShareButton
                   url={this.state.image}
                   quote="Shared from Poor Peter's AntAlmanac: https://antalmanac.com/ !! "
                   hashtag="#AntAlmanac"
+                  style={{cursor: "pointer"}}
                 >
-                  <FacebookIcon style={{cursor: "pointer"}} size={100} />
+                  <FacebookIcon size={80} round />
                 </FacebookShareButton>
               </Typography>
             ) : (
