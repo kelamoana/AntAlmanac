@@ -8,7 +8,6 @@ import {
   ChevronLeft,
   ChevronRight,
   Undo,
-  OpenInBrowser,
   Delete
 } from "@material-ui/icons";
 
@@ -102,11 +101,7 @@ class Calendar extends Component {
             </Tooltip>
             <DomPic takePic={this.takePic} />
 
-            <Tooltip title="More Info on Selected Classes">
-              <IconButton onClick={this.props.moreInfoF}>
-                <OpenInBrowser />
-              </IconButton>
-            </Tooltip>
+    
             <DialogSelect
               onAddCustomEvent={this.props.onAddCustomEvent}
               setID={this.props.setID}

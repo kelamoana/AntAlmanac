@@ -10,11 +10,10 @@ import {
   Tooltip
 } from "@material-ui/core";
 
-import MessengerCustomerChat from "react-messenger-customer-chat";
 import SearchForm from "../SearchForm/SearchForm";
 import CoursePane from "../CoursePane/CoursePane";
 import Calendar from "../Calendar/Calendar";
-import { ListAlt, Dns } from "@material-ui/icons";
+import { ListAlt, Dns,OpenInBrowser } from "@material-ui/icons";
 import Info from "@material-ui/icons/InfoSharp";
 import logo_tight from "./logo_tight.png";
 import logo_wide from "./logo_wide.png";
@@ -78,12 +77,18 @@ class App extends Component {
     this.resizeLogo();
     window.addEventListener("resize", this.resizeLogo);
 
-    // const script = document.createElement("script");
+    const script = document.createElement("script");
 
-    // script.src = "https://www.rumbletalk.com/client/?FuP32ilf&1";
-    // script.async = true;
+    const scriptText = document.createTextNode(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2&appId=343457496213889&autoLogAppEvents=1';
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
 
-    // document.body.appendChild(script);
+    script.appendChild(scriptText);
+    document.head.appendChild(script);
   };
 
   componentWillUnmount() {
@@ -402,10 +407,7 @@ class App extends Component {
       <Fragment>
         <div>
           
-          <MessengerCustomerChat
-            pageId="2286387408050026"
-            appId="343457496213889"
-          />
+        
         </div>
         <CssBaseline />
         <AppBar id="fox" position="static" style={{ marginBottom: 8 }}>
@@ -434,10 +436,6 @@ class App extends Component {
             />
             <LoadUser load={this.handleLoad} save={this.handleSave} />
 
-            {/* <LogApp act={this.handleChange} load={this.handleLoad} />
-
-            <LoadApp act={this.handleChange} save={this.handleSave} /> */}
-
             <Tooltip title="Info Page">
               <a
                 style={{ color: "white" }}
@@ -460,7 +458,6 @@ class App extends Component {
                   ]
                 }
                 heighSize ={this.state.hS}
-                moreInfoF={this.moreInfoF}
                 clickToUndo={this.undoEventHelp}
                 currentScheduleIndex={this.state.currentScheduleIndex}
                 onClassDelete={this.handleClassDelete}
@@ -485,7 +482,19 @@ class App extends Component {
                     <Dns />
                   </IconButton>
                 </Tooltip>
-              
+                <Tooltip title="More Info on Selected Classes">
+              <IconButton onClick={this.moreInfoF}>
+                <OpenInBrowser />
+              </IconButton>
+            </Tooltip>
+            <Typography style={{ flexGrow: 1 }} />
+                  {/* <FBcomments/> */}
+                  <div class="fb-messengermessageus" 
+          messenger_app_id="343457496213889" 
+            page_id="2286387408050026"
+              />
+         
+                <div class="fb-like" data-href="https://www.facebook.com/AntAlmanac" data-layout="button_count" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>               
               </Toolbar>
             </Paper>
             <Paper
