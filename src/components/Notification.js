@@ -97,21 +97,20 @@ const styles2 = theme => ({
 class CustomizedSnackbars extends React.Component {
   state = {
     message: "hello! ",
-    variant: "success"
+    variant: "success",
+    open:false
   };
 
   
 
   handleSave =  (check,message) => {
     // var person = prompt("Please enter your unique username");
-    if(check ===-1)
-    {
-        this.setState({variant: "error", open: true, message});
-    }
-    else
-    {
-        this.setState({variant: "success", open: true, message});
-    }
+    let variant ="success";
+    if(check === -1) variant = "error";
+    else if(check === 1) variant = "warning";
+  
+    this.setState({variant, open: true, message});
+   
   };
 
   handleClose = ( reason) => {

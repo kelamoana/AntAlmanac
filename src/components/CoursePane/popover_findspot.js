@@ -81,20 +81,23 @@ class SPopover extends React.Component {
     const fb = this.state.userFB;
     const name = this.props.name[1] + " " + this.props.name[2]
 
-    const url = `https://mediaont.herokuapp.com/facebook/${code}/${name}/${fb}`;
+    const url = `https://mediaont.herokuapp.com/facebook/0/${code}/${name}/${fb}`;
 
 
-    this.setState({anchorEl: null});
+    
     window.localStorage.setItem("fb", fb);
       const res =  await fetch(url);
-      const serverResponse = await res.text();
       
 
-      console.log(serverResponse,res.status)
+      const serverResponse = await res.json();
+      console.log(serverResponse);
+
+      this.setState({anchorEl: null});
+
       let check = 1
       if(res.status !== 200)
        check = -1
-      this.props.handleSave(check, serverResponse);
+      this.props.handleSave(serverResponse.code, serverResponse.message);
     
   }
 
