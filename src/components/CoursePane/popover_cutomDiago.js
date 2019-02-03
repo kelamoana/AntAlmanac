@@ -70,7 +70,7 @@ class CustomizedDialogDemo extends React.Component {
     return (
       <div>
         <Button variant="text" style={{color:"#FF0000"}} onClick={this.handleClickOpen}>
-         **Facebook ID? What? Why? How?
+         **Facebook ID? What? Why? Read me first!
         </Button>
         <Dialog
           onClose={this.handleClose}
@@ -78,7 +78,7 @@ class CustomizedDialogDemo extends React.Component {
           open={this.state.open}
         >
           <DialogTitle id="customized-dialog-title" onClose={this.handleClose}>
-          <Typography variant="h1" Component="h1">Facebook Messenger Notifications</Typography>
+            <Typography variant="title" Component="h1">Facebook Messenger Notifications</Typography>
           </DialogTitle>
           <DialogContent>
 
@@ -86,7 +86,7 @@ class CustomizedDialogDemo extends React.Component {
               <p>Sorry fam, but you're not unique. That's why getting your name won't help me find you on FB. Instead, please enter the unique serial code with which FB has objectified you. Thanks!</p>
               <p>Don't know what it is? <a href="https://findmyfbid.com" target="_blank" rel="noopener noreferrer">Find it here; no login requried</a>.</p>
               <p>First time? Please check Settings >> People >> Message Requests >> filtered requests in the Messenger App for a confirmation message. Reply to it and you're all set!</p>
-              <p><em>Paul Rever Notifications for Facebook Messenger is still very young, and we have not been able to fully test its robustness. It may be possible for notifications to arrive delayed or not at all lol. However, email notifications are stable. Thank you for your patience!</em></p>
+              <p><em>Disclaimer: Paul Rever Notifications for Facebook Messenger is still very young in development, and we have not been able to fully test its robustness. It may be possible for FB notifications to arrive delayed or not at all lol. However, email notifications are stable, so we recommend signing up for email notifications at least. Thank you for your patience!</em></p>
             </Typography>
 
           </DialogContent>
