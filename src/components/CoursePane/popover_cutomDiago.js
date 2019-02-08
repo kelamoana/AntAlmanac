@@ -85,14 +85,14 @@ class CustomizedDialogDemo extends React.Component {
           <Typography>
               <p>Sorry fam, but you're not unique. That's why getting your name won't help me find you on FB. Instead, please enter the unique serial code with which FB has objectified you. Thanks!</p>
               <p>Don't know what it is? <a href="https://findmyfbid.com" target="_blank" rel="noopener noreferrer">Find it here; no login requried</a>.</p>
-              <p>First time? Please check Settings >> People >> Message Requests >> filtered requests in the Messenger App for a confirmation message. Reply to it and you're all set!</p>
+              <p>First time? Please check Messenger Icon >> Message Requests on desktop and Settings >> People >> Message Requests >> filtered requests in the App for a confirmation message. Reply to it and you're all set!</p>
               <p><em>Disclaimer: Paul Rever Notifications for Facebook Messenger is still very young in development, and we have not been able to fully test its robustness. It may be possible for FB notifications to arrive delayed or not at all lol. However, email notifications are stable, so we recommend signing up for email notifications at least. Thank you for your patience!</em></p>
             </Typography>
 
           </DialogContent>
           <DialogActions>
             <Button onClick={this.handleClose} color="primary">
-              Close
+              Got it!
             </Button>
           </DialogActions>
         </Dialog>

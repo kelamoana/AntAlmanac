@@ -14,8 +14,7 @@ import MessengerCustomerChat from "react-messenger-customer-chat";
 import SearchForm from "../SearchForm/SearchForm";
 import CoursePane from "../CoursePane/CoursePane";
 import Calendar from "../Calendar/Calendar";
-import { ListAlt, Dns } from "@material-ui/icons";
-import Info from "@material-ui/icons/InfoSharp";
+import { Info, ListAlt, Dns, ImportContacts } from "@material-ui/icons";
 import logo_tight from "./logo_tight.png";
 import logo_wide from "./logo_wide.png";
 import ShowE from "../showEvents/showE";
@@ -397,11 +396,11 @@ class App extends Component {
       schedule2Events:S2,schedule3Events:S3});
  }
   render() {
-    console.log("%cDonate "+"%cPlease!!!","color:green","color:red");
+    console.log("%cDonate %cPlease!!!","color:green","color:red");
     return (
       <Fragment>
         <div>
-          
+
           <MessengerCustomerChat
             pageId="2286387408050026"
             appId="343457496213889"
@@ -437,6 +436,16 @@ class App extends Component {
             {/* <LogApp act={this.handleChange} load={this.handleLoad} />
 
             <LoadApp act={this.handleChange} save={this.handleSave} /> */}
+
+            <Tooltip title="Blue Book Giveaway!">
+              <a
+                style={{ color: "white" }}
+                href={"https://goo.gl/forms/KI6MkNCZsyzIVkF42"}
+                target="_blank"
+              >
+                <ImportContacts style={{ marginLeft: 15, marginRight: 30 }} fontSize="48px" color="white" />
+              </a>
+            </Tooltip>
 
             <Tooltip title="Info Page">
               <a
@@ -485,7 +494,7 @@ class App extends Component {
                     <Dns />
                   </IconButton>
                 </Tooltip>
-              
+
               </Toolbar>
             </Paper>
             <Paper

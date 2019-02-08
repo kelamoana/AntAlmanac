@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import {  IconButton, Menu, MenuItem,Divider} from "@material-ui/core";
+import { Typography, IconButton, Menu, MenuItem } from "@material-ui/core";
 import rmpData from "../CoursePane/RMP.json";
 import AlmanacGraphWrapped from "../AlmanacGraph/AlmanacGraph";
 import POPOVER from "../CoursePane/PopOver";
@@ -78,7 +78,7 @@ class ScheduleAddSelector extends Component {
     return test;
   };
 
-  
+
   statusforFindingSpot = (section,classCode) => {
     if(section === 'FULL')
     return <Notification  full={section} code={classCode} name={this.props.name}/>
@@ -90,7 +90,7 @@ class ScheduleAddSelector extends Component {
     var section = this.props.section;
     return (
       <Fragment>
-        
+
         <tr
           {...(!this.disableTBA(section)
             ? { onClick: this.handleClick, style: { cursor: "pointer" } }
@@ -176,7 +176,7 @@ class showE extends Component {
      schedules.push(events.filter(event=>event.index.includes(i)));
     }
     var newArr = new Array([],[],[],[]);
-   
+
     var i =0;
     var foundIndex =0;
     for(var schedule of schedules)
@@ -186,8 +186,8 @@ class showE extends Component {
         foundIndex = newArr[i].findIndex(function(element){
          return ( element.name.join() === event.name.join()&& element.courseTerm ===event.courseTerm);
        });
- 
-       if(foundIndex == -1)
+
+       if(foundIndex === -1)
          {
            newArr[i].push({
              name : event.name,
@@ -205,9 +205,14 @@ class showE extends Component {
 
     return (
       <Fragment>
-        <IconButton style={{ marginRight: 24 }} onClick={this.props.moreInfoF}>
-          <ArrowBack />
-        </IconButton>
+        <div id="misc_header">
+          <Typography variant="title">
+            <IconButton style={{ marginRight: 24 }} onClick={this.props.moreInfoF}>
+              <ArrowBack />
+            </IconButton>
+            More Info on Selected Courses
+          </Typography>
+        </div>
         {newArr.map((schedule,index) =>{
      return (<div> {schedule.length>0 ?(<div> <h2>
      Schedule {index + 1}</h2>{schedule.map(event =>{
@@ -231,11 +236,11 @@ class showE extends Component {
             term={event.courseTerm}
             courseDetails={event}
           />
-          </div>      
+          </div>
           {/* {event.section.finalExam.length>3 ?(<Typography style={{ margin: "10px 5px 0px 10px" }} variant="button" gutterBottom>
         Final: {event.section.finalExam}
       </Typography>):null} */}
-              
+
               <table >
                 <thead>
                   <tr>
@@ -263,7 +268,7 @@ class showE extends Component {
                 />
 
         );})} </tbody></table></div>)
-      })}<div style={{marginTop: "10px",height:"10px",backgroundColor:"#3f51b5"}}/></div>):null}</div>);    
+      })}<div style={{marginTop: "10px",height:"10px",backgroundColor:"#3f51b5"}}/></div>):null}</div>);
    })}
         {/* {this.showEvent(this.props.events)} */}
       </Fragment>
