@@ -16,7 +16,7 @@ const styles = theme => ({
 });
 
 class CPicker extends React.Component {
- 
+
   constructor(props) {
     super(props);
     this.state = {
@@ -28,7 +28,7 @@ class CPicker extends React.Component {
     if (!event)  event = window.event;
     event.cancelBubble = true;
     if (event.stopPropagation) event.stopPropagation();
-  
+
     this.setState({
       anchorEl: event.currentTarget,
     });
@@ -48,16 +48,15 @@ class CPicker extends React.Component {
   };
 
   render() {
-    const { classes } = this.props;
     const { anchorEl } = this.state;
     const open = Boolean(anchorEl);
 
     return (
-      
+
   <td bgcolor={this.props.color}  aria-owns={open ? 'simple-popper' : undefined}
           aria-haspopup="true"
           onClick={e => {this.handleClick(e)}}>
-       
+
         <Popover
           id="simple-popper"
           open={open}
@@ -72,8 +71,8 @@ class CPicker extends React.Component {
             horizontal: 'center',
           }}
         >
-        <SketchPicker color={this.state.color} 
-   
+        <SketchPicker color={this.state.color}
+
          onChange={ this.handleChange }/>        </Popover>
      </td>
     );

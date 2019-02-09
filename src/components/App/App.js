@@ -13,8 +13,13 @@ import {
 import SearchForm from "../SearchForm/SearchForm";
 import CoursePane from "../CoursePane/CoursePane";
 import Calendar from "../Calendar/Calendar";
-import { ListAlt, Dns,OpenInBrowser } from "@material-ui/icons";
-import Info from "@material-ui/icons/InfoSharp";
+import {
+  Info,
+  ListAlt,
+  Dns,
+  ImportContacts,
+  OpenInBrowser
+} from "@material-ui/icons";
 import logo_tight from "./logo_tight.png";
 import logo_wide from "./logo_wide.png";
 import ShowE from "../showEvents/showE";
@@ -402,12 +407,12 @@ class App extends Component {
       schedule2Events:S2,schedule3Events:S3});
  }
   render() {
-    console.log("%cDonate "+"%cPlease!!!","color:green","color:red");
+    console.log("%cDonate %cPlease!!!","color:green","color:red");
     return (
       <Fragment>
         <div>
-          
-        
+
+
         </div>
         <CssBaseline />
         <AppBar id="fox" position="static" style={{ marginBottom: 8 }}>
@@ -435,6 +440,16 @@ class App extends Component {
               style={{ flexGrow: 2 }}
             />
             <LoadUser load={this.handleLoad} save={this.handleSave} />
+
+            <Tooltip title="Blue Book Giveaway!">
+              <a
+                style={{ color: "white" }}
+                href={"https://goo.gl/forms/KI6MkNCZsyzIVkF42"}
+                target="_blank"
+              >
+                <ImportContacts style={{ marginLeft: 15, marginRight: 30 }} fontSize="48px" color="white" />
+              </a>
+            </Tooltip>
 
             <Tooltip title="Info Page">
               <a
@@ -489,12 +504,12 @@ class App extends Component {
             </Tooltip>
             <Typography style={{ flexGrow: 1 }} />
                   {/* <FBcomments/> */}
-                  <div class="fb-messengermessageus" 
-          messenger_app_id="343457496213889" 
+                  <div class="fb-messengermessageus"
+          messenger_app_id="343457496213889"
             page_id="2286387408050026"
               />
-         
-                <div class="fb-like" data-href="https://www.facebook.com/AntAlmanac" data-layout="button_count" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>               
+
+                <div class="fb-like" data-href="https://www.facebook.com/AntAlmanac" data-layout="button_count" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
               </Toolbar>
             </Paper>
             <Paper
