@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import loadingGif from "./loading.mp4";
 import querystring from "querystring";
 import CourseRenderPane from "./CourseRenderPane";
-import welcome from "./calvin.png";
+import welcome from "./ctrlZ.png";
 
 class CoursePane extends Component {
   constructor(props) {
@@ -62,7 +62,7 @@ class CoursePane extends Component {
     }
   }
 
-  
+
   render() {
     const { loading, courseData } = this.state;
 
@@ -96,16 +96,16 @@ class CoursePane extends Component {
       return (
         //<Grid item md={6} xs={12}>
           <div style={{
-            display: "flex", 
+            display: "flex",
             justifyContent: "center",
-            alignItems: "center" 
+            alignItems: "center"
             }}>
             <img
               src={welcome}
               alt="my face"
-              
-              style={{ 
-                width: "390", 
+
+              style={{
+                width: "390",
                 height: "600"
               }}
             />
