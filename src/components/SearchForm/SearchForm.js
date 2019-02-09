@@ -8,7 +8,7 @@ import Button from "@material-ui/core/Button";
 class SearchForm extends Component {
   constructor(props) {
     super(props);
-    this.state = { dept: null, ge: "ANY", term: "2019 Winter" };
+    this.state = { dept: null, ge: "ANY", term: "2019 Spring" };
     this.setDept = this.setDept.bind(this);
     this.setGE = this.setGE.bind(this);
     this.setTerm = this.setTerm.bind(this);
