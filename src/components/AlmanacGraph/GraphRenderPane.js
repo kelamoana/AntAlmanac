@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import { Button } from "@material-ui/core";
 import PropTypes from "prop-types";
+import Rechart from './rechart'
+
 const styles = () => ({
   multiline: {
     whiteSpace: "pre"
@@ -9,12 +11,20 @@ const styles = () => ({
 });
 
 class GraphRenderPane extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { open: false, graph: null };
-  }
+  _isMounted = false;
+
+    state = { 
+      open: false, 
+      graph: null 
+    };
+
+    componentWillUnmount() {
+      this._isMounted = false;
+    }
 
   componentDidMount() {
+    this._isMounted = true;
+
     if (this.props.length < 4) {
       this.setState({ open: true }, () => {
         this.fetchGraph(
@@ -27,7 +37,8 @@ class GraphRenderPane extends Component {
   }
 
   componentDidUpdate(prevProps, prevState, prevContext) {
-    if (prevProps !== this.props && this.props.length < 4) {
+
+    if ((prevProps.year !== this.props.year || prevProps.quarter !== this.props.quarter) && this.props.length < 4) {
       this.setState({ open: true }, () => {
         this.fetchGraph(
           this.props.quarter,
@@ -49,17 +60,23 @@ class GraphRenderPane extends Component {
     });
   };
 
-  fetchGraph(quarter, year, code) {
-    const url = `https://l5qp88skv9.execute-api.us-west-1.amazonaws.com/dev/${quarter}/${year}/${code}`;
-
-    fetch(url, { signal: this.signal })
-      .then(resp => resp.text())
-      .then(resp => {
-        this.setState({ graph: { __html: resp } });
-      });
+  fetchGraph = async (quarter, year, code) => {
+    const url = `https://almanac-graphs.herokuapp.com/${quarter + year}/${code}`
+    console.log(url)
+    const resp = await fetch(url, { signal: this.signal });
+    if(resp.status === 200){
+      const raw_data = await resp.json();
+      if (this._isMounted) {
+      this.setState({ graph: raw_data });
+      }
+    }
+    else
+    this.setState({ graph: null });
   }
 
   render() {
+    console.log(this.state)
+    console.log(this.props)
     return (
       <div>
         <table>
@@ -74,8 +91,8 @@ class GraphRenderPane extends Component {
             <tr>
               <td className={this.props.classes.multiline}>
                 {`${this.props.section.classType}
-Section: ${this.props.section.sectionCode}
-Units: ${this.props.section.units}`}
+       Section: ${this.props.section.sectionCode}
+       Units: ${this.props.section.units}`}
               </td>
               <td className={this.props.classes.multiline}>
                 {this.props.section.instructors.join("\n")}
@@ -98,12 +115,9 @@ Units: ${this.props.section.units}`}
           <div>
             <Button variant="contained" onClick={() => this.handleOpen()}>
               OPEN/CLOSE
-            </Button>
+       </Button>
             {this.state.open ? (
-              <div
-                style={{ width: "85%" }}
-                dangerouslySetInnerHTML={this.state.graph}
-              />
+              <Rechart rawData={this.state.graph} />
             ) : null}
           </div>
         }
@@ -111,6 +125,9 @@ Units: ${this.props.section.units}`}
     );
   }
 }
+
+
+
 
 GraphRenderPane.propTypes = {
   section: PropTypes.shape({
