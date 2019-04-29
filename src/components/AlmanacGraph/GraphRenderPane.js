@@ -75,8 +75,8 @@ class GraphRenderPane extends Component {
   }
 
   render() {
-    console.log(this.state)
-    console.log(this.props)
+    //console.log(this.state)
+    //console.log(this.props)
     return (
       <div>
         <table>

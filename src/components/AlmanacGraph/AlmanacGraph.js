@@ -105,6 +105,8 @@ class AlmanacGraph extends Component {
     }
 
     render() {
+        console.log(this.state.sections)
+        console.log(this.state.length)
         return (
             <Fragment>
                 <Typography className={this.props.classes.flex}/>
@@ -127,7 +129,7 @@ class AlmanacGraph extends Component {
                                     rel="noopener noreferrer"
                                     style={{color: "red"}}
                                 >
-                                    <Help fontSize="48px"/>
+                                    <Help fontSize="large"/>
                                 </a>
                             </Tooltip>
                         </Typography>
@@ -157,6 +159,7 @@ class AlmanacGraph extends Component {
                                 {this.state.sections.map(section => {
                                     return (
                                         <GraphRenderPane
+                                            key ={section.classCode}
                                             section={section}
                                             quarter={this.state.term[5].toLowerCase()}
                                             year={this.state.term.substring(2, 4)}

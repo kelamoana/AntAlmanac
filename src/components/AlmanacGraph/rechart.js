@@ -10,7 +10,7 @@ export default class Graph extends Component {
     };
   
 	render () {
-   // console.log(this.props.rawData)
+   console.log(this.props.rawData)
   	return (
     	<LineChart width={950} height={500} data={this.props.rawData}
             margin={{top: 25, right: 30, left: 70, bottom: 5}}>
@@ -23,7 +23,7 @@ export default class Graph extends Component {
       {/**  <ReferenceLine y={this.props.rawData.max} label="max" stroke="red" alwaysShow/> */}
        <Line type="monotone" dataKey="max"      stroke={this.state.maxColor} activeDot={{ stroke: '#f01414', strokeWidth: 4, r: 7 }}/>
        <Line type="monotone" dataKey="enrolled" stroke={this.state.enrolledColor} activeDot={{ stroke: '#8884d8', strokeWidth: 4, r: 7 }}/>
-       <Line type="monotone" dataKey="requisted"      stroke={this.state.reqColor}      activeDot={{ stroke: '#82ca9d', strokeWidth: 4, r: 7 }}/>
+       <Line type="monotone" dataKey="requested"      stroke={this.state.reqColor}      activeDot={{ stroke: '#82ca9d', strokeWidth: 4, r: 7 }}/>
        <Line type="linearClosed" dataKey="waitlist" stroke={this.state.waitColor}     activeDot={{ stroke: '#fad700', strokeWidth: 4, r: 7 }}/>
 
       </LineChart>
