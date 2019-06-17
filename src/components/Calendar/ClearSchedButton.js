@@ -13,6 +13,9 @@ import {
   Delete
 } from '@material-ui/icons'
 
+// The following code gives the user the options to
+// clear schedules 1, 2, 3, and 4 individually or with any combination of the 4 schedules.
+
 export default class ClearSched extends React.Component {
   constructor(props) {
     super(props);
@@ -26,10 +29,12 @@ export default class ClearSched extends React.Component {
     };
   }
 
+  // Allows the button to pop up
   handleClickOpen = () => {
     this.setState({ open: true });
   };
 
+  // When the Dialog is closed, this resets the Schedules the user selected.
   handleClose = () => {
     this.setState({
       open: false,
@@ -41,6 +46,7 @@ export default class ClearSched extends React.Component {
     this.props.handleSubmenuClose();
   }
 
+  // This function adds elements to the toDelete array which holds which schedules to Clear.
   handleClear = () => {
     let toDelete = [];
 
@@ -61,6 +67,8 @@ export default class ClearSched extends React.Component {
     this.handleClose()
   }
 
+  // Sets the "selected" state to True. All schedules begin in a False state, and changing to True will make the software push
+  // to the toDelete array as done so in handleClear.
   handleChange = name => event => {
     if (name==='all'){
       this.setState({
@@ -75,6 +83,7 @@ export default class ClearSched extends React.Component {
     }
   };
 
+  // Renders the Dialog Box and the checkboxes used for selecting schedules. Also calls functions previously defined.
     render() {
     return (
       <Fragment>
